@@ -1,0 +1,1 @@
+Deep learning is the subfield of AI, in which we used neurons to mimic the human behaviour.

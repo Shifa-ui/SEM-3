@@ -1,0 +1,49 @@
+//  import http from 'http'
+//  const server = http.createServer((req,res)=>{
+//     console.log("HELLO WORLD");
+//     console.log(req.url)
+// if(req.url === "/"){
+
+
+//     res.end("welcome from the server");
+// }
+// else if(req.url ==="/about"){
+//     res.end("about page")
+// }
+// else if(req.url === "/contacts"){
+//     res.end("contacts page")
+// }
+    
+ 
+//  server.listen(3000, "127.0.0.1", () => {
+// console.log("server is running....");
+//  })
+//  const home = fs.readFileSync('./index.h'
+
+    import http from 'http';
+import fs from 'fs';
+
+const home = fs.readFileSync('./index.html', 'utf8');
+const data = fs.readFileSync('./contact.html', 'utf8');
+const hero = fs.readFileSync('./about.html', 'utf8');
+const lol = fs.readFileSync('./service.html', 'utf8');
+
+const server = http.createServer((req, res) => {
+    console.log("Yooooooo");
+    console.log(req.url);
+    if (req.url === '/') {
+        res.end(home);
+    } else if (req.url === '/about') {
+        res.end(hero);
+    } else if (req.url === '/contact') {
+        res.end(data);
+    } else if (req.url === '/services') {
+        res.end(lol);
+    } else {
+        res.end("404 - Page Not Found");
+    }
+});
+
+server.listen(5500, "127.0.0.1", () => {
+    console.log("Server is running on port 5500");
+});

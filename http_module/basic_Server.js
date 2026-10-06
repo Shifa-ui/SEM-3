@@ -1,0 +1,68 @@
+// import http from 'http'
+
+// // create basic http server
+// const server = http.createServer((req, res)=> {
+//     console.log("hello world")
+//     const order = {
+//         orderId: 1097,
+//         des: "delhi",
+//         source: "ghaziabad",
+//         username:"shifa"
+//     }
+//     // res.statusCode = 200
+//     // res.setHeader("content-type", "text/html")
+//     // res.end("welcome from server")
+    
+// })
+// server.listen(3000, "127.0.0.1", () => {
+//     console.log("server is running....");
+// })
+// // 127.0.0.3000
+
+
+// import http from 'http';
+
+const http = require('http');
+import fs from 'fs';
+
+const server = http.createServer((req, res) => {
+    console.log("Yoooooooö");
+    
+    const order={
+        orderId: 9942,
+        des: "Delhi",
+        source: "Mumbai",
+        username: "shifa",
+    }
+
+    // res.statusCode = 201;
+    // res.setHeader("Content-Type" , "application/json");
+
+    res.writeHead(200, {
+        'Content-Type': 'application/json', 
+        'Custom-Header': 'shifa',
+        'accept-charset': 'utf-8',
+    });
+    fs.readFile('index.html', (err, data) => {
+        if (err) {
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Internal Server Error');
+        } else {
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            }
+        })
+    });
+    res.end(JSON.stringify(order));
+
+// Status Code: 200 - ok
+// Status Code: 201 - create
+// Status Code: 400 - bad request
+// Status Code: 401 - unauthorized
+// Status Code: 403 - forbidden
+// Status Code: 404 - not found
+// Status Code: 500 - internal server error
+
+server.listen(5500,"127.0.0.1",()=>{
+    console.log("Server is running on port 5500");
+})
